@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KneeGuard Pro - Intelligent Knee Rehabilitation System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles - Aerospace Technology Style */
+        :root {
+            --primary: #0A2463;
+            --secondary: #C0C0C0;
+            --accent: #FF6B35;
+            --dark: #121212;
+            --dark-gray: #2D3047;
+            --light: #F8F9FA;
+            --success: #4ECDC4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-gray) 100%);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .logo-icon:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--light);
+            top: 10px;
+            left: 10px;
+        }
+        
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: radial-gradient(circle at 20% 50%, rgba(10, 36, 99, 0.3) 0%, rgba(18, 18, 18, 0) 50%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23C0C0C0" opacity="0.1"/></svg>');
+            background-size: 150px;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-text .tagline {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+        
+        .hero-visual {
+            position: relative;
+        }
+        
+        .knee-model {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(10, 36, 99, 0.2), rgba(255, 107, 53, 0.1));
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .knee-joint {
+            width: 200px;
+            height: 300px;
+            position: relative;
+        }
+        
+        .joint-part {
+            position: absolute;
+            border-radius: 10px;
+        }
+        
+        .femur {
+            width: 80px;
+            height: 120px;
+            background: linear-gradient(to bottom, var(--primary), #1E40AF);
+            top: 0;
+            left: 60px;
+            border-radius: 40px 40px 10px 10px;
+        }
+        
+        .meniscus {
+            width: 100px;
+            height: 30px;
+            background: linear-gradient(to right, var(--accent), #FF8C5A);
+            top: 120px;
+            left: 50px;
+            border-radius: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        .tibia {
+            width: 70px;
+            height: 150px;
+            background: linear-gradient(to top, var(--primary), #1E40AF);
+            top: 150px;
+            left: 65px;
+            border-radius: 10px 10px 40px 40px;
+        }
+        
+        .brace {
+            width: 250px;
+            height: 320px;
+            position: absolute;
+            border: 2px dashed var(--accent);
+            border-radius: 30px;
+            top: 40px;
+            left: calc(50% - 125px);
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Section Common Styles */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Problem Section */
+        .problem-section {
+            background: rgba(45, 48, 71, 0.5);
+            border-radius: 20px;
+            margin: 20px;
+            padding: 60px 40px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-card {
+            background: rgba(10, 36, 99, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(to right, var(--accent), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Solution Section */
+        .solution-visual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: rgba(10, 36, 99, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            background: rgba(10, 36, 99, 0.4);
+            border-color: var(--accent);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        /* Technology Demo */
+        .tech-demo {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-demo:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-item {
+            padding: 1.5rem;
+            background: rgba(10, 36, 99, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: rgba(10, 36, 99, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background: rgba(10, 36, 99, 0.5);
+            padding: 1.2rem;
+            text-align: left;
+            color: var(--light);
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .check {
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .cross {
+            color: #FF4757;
+            font-weight: bold;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .team-card {
+            background: rgba(10, 36, 99, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            transition: transform 0.3s;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+        
+        .team-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5rem;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            background: rgba(45, 48, 71, 0.5);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 36, 99, 0.3);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(192, 192, 192, 0.1);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--light);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 60px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tech-demo {
+                padding: 2rem 1rem;
+            }
+            
+            .team-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+            
+            .team-card {
+                padding: 2rem;
+            }
+        }
+        
+        /* Animation Effects */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Interactive Button Styles */
+        .interactive-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+        
+        .interactive-btn:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        /* Data Visualization */
+        .data-viz {
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 30px;
+            margin: 2rem 0;
+        }
+        
+        .bar {
+            width: 40px;
+            background: linear-gradient(to top, var(--primary), var(--accent));
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            transition: height 1s ease;
+        }
+        
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: var(--accent);
+        }
+        
+        /* Patent Icon */
+        .patent-icon {
+            font-size: 1.2rem;
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        /* Partners Section */
+        .partners-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(10, 36, 99, 0.1);
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .partner-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(10, 36, 99, 0.3), rgba(255, 107, 53, 0.1));
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: bold;
+            border: 1px solid rgba(192, 192, 192, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">KneeGuard Pro</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#problem">Problem & Pain Points</a></li>
+                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#technology">Core Technology</a></li>
+                    <li><a href="#advantage">Unique Advantages</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="cta-button">Get Product Info</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text fade-in">
+                <h1>Intelligent Dynamic Knee Rehabilitation System</h1>
+                <div class="tagline">Smart Adaptive Support, Lightweight Movement – Making Every Step Easier</div>
+                <p>Based on biomechanical principles and intelligent sensing technology, providing adaptive, real-time adjustable knee joint dynamic support solutions for meniscus injury patients. Breaking through the static limitations of traditional knee braces, achieving intelligent pressure distribution during movement.</p>
+                <div>
+                    <a href="#technology" class="cta-button">Learn About Core Technology</a>
+                    <button class="interactive-btn" onclick="showDemo()">Watch Product Demo</button>
+                </div>
+            </div>
+            <div class="hero-visual fade-in">
+                <div class="knee-model">
+                    <div class="knee-joint">
+                        <div class="joint-part femur"></div>
+                        <div class="joint-part meniscus"></div>
+                        <div class="joint-part tibia"></div>
+                    </div>
+                    <div class="brace"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Pain Points Section -->
+    <section id="problem" class="problem-section">
+        <div class="container">
+            <h2 class="section-title">Challenges in Knee Rehabilitation</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">Knee injuries are one of the most common physical problems encountered in daily exercise, affecting both professional athletes and ordinary individuals</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card fade-in">
+                    <div class="stat-number">19%</div>
+                    <h3>Meniscus Tear Incidence</h3>
+                    <p>Approximately 19% of middle-aged and elderly people aged 45-75 experience meniscus tear problems, with over 60 million affected in China</p>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">50%+</div>
+                    <h3>Traditional Knee Brace Market Share</h3>
+                    <p>Traditional knee braces dominate existing solutions but only provide basic support without active pressure reduction</p>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">＜20%</div>
+                    <h3>Rehabilitation Equipment Coverage</h3>
+                    <p>Hospital rehabilitation equipment is bulky and expensive, with coverage less than 20%, unable to meet home rehabilitation needs</p>
+                </div>
+                
+                <div class="stat-card fade-in">
+                    <div class="stat-number">High</div>
+                    <h3>Secondary Injury Risk</h3>
+                    <p>Limited medical resources in remote areas, long rehabilitation cycles, patients face high risk of secondary injuries</p>
+                </div>
+            </div>
+            
+            <div class="fade-in" style="margin-top: 3rem; padding: 2rem; background: rgba(10, 36, 99, 0.2); border-radius: 10px; border-left: 4px solid var(--accent);">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">Core Pain Point Analysis</h3>
+                <p>The meniscus has limited self-healing capacity, improper management or overuse after injury can accelerate joint degeneration. Patients face a difficult dilemma: resting too much leads to muscle atrophy, while normal activity may worsen joint pressure. Existing solutions are either passive fixation or overly restrictive, unable to adapt to users' real-time activity level changes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title">Intelligent Dynamic Knee Rehabilitation Solution</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">Our innovation aims to fill the gap of dynamic adaptive support systems, achieving real-time joint pressure sharing and adjustment through intelligent knee support scaffold</p>
+            
+            <div class="solution-visual">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3>Vertical Load Offloading</h3>
+                    <p>Through integrated elastic components, storing elastic potential energy during leg bending, releasing lifting force during extension and standing, reducing knee joint compressive stress</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Controlled Valgus Moment</h3>
+                    <p>Introducing mild controlled valgus moment, fine-tuning knee alignment during movement, regulating load distribution across tibiofemoral joint, reducing shear and compressive forces</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Intelligent Sensing & Feedback</h3>
+                    <p>Integrating IMU, tension/strain/thin film pressure sensors with ESP32 main control, real-time monitoring of knee angle and force, providing rehabilitation data quantification</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Personalized Customization</h3>
+                    <p>Based on 3D printing technology, achieving personalized customization of structural parameters such as stiffness, lift magnitude, torque, adapting to different body types and rehabilitation stages</p>
+                </div>
+            </div>
+            
+            <!-- Data Visualization -->
+            <div class="fade-in" style="margin-top: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Key Performance Indicators Comparison</h3>
+                <div class="data-viz">
+                    <!-- Bar charts will be dynamically generated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Technology Section -->
+    <section id="technology" class="tech-demo">
+        <div class="container">
+            <h2 class="section-title">Core Technology: Biomechanics & Intelligent Engineering Integration</h2>
+            
+            <div class="demo-grid">
+                <div class="demo-item fade-in">
+                    <h4><i class="fas fa-cogs patent-icon"></i>Three-Chamber Unloading Biomechanical Structure</h4>
+                    <p>Simulating the load-sharing and shock-absorbing functions of the natural meniscus, rather than merely restricting movement like traditional knee braces. Core mechanical configuration combines elastic load offloading, valgus force application, and low-friction joint structure.</p>
+                </div>
+                
+                <div class="demo-item fade-in">
+                    <h4><i class="fas fa-bolt patent-icon"></i>Elastic Energy Storage & Release</h4>
+                    <p>During leg bending, elastic components deform and store elastic potential energy; during extension and standing, release energy as lifting force. This passive adaptive mechanism is both energy-efficient and reliable.</p>
+                </div>
+                
+                <div class="demo-item fade-in">
+                    <h4><i class="fas fa-print patent-icon"></i>3D Printing Customized Production</h4>
+                    <p>Using additive manufacturing technology, achieving cost-effective production and customization. Incorporating bearings at joint rotation points significantly reduces friction, ensuring smooth, low-resistance movement.</p>
+                </div>
+                
+                <div class="demo-item fade-in">
+                    <h4><i class="fas fa-mobile-alt patent-icon"></i>Intelligent Rehabilitation Monitoring System</h4>
+                    <p>Supporting mobile APP provides real-time feedback and personalized rehabilitation plans, achieving home-use rehabilitation data monitoring, connecting users with rehabilitation professionals.</p>
+                </div>
+            </div>
+            
+            <div class="fade-in" style="margin-top: 3rem; text-align: center;">
+                <button class="interactive-btn" onclick="toggleTechDetails()">Show Technical Details</button>
+                <div id="tech-details" style="display: none; margin-top: 2rem; padding: 2rem; background: rgba(0,0,0,0.3); border-radius: 10px; text-align: left;">
+                    <h4>Detailed Technical Parameters:</h4>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li>Weight: Less than 800g, using lightweight 3D printing materials</li>
+                        <li>Knee joint pressure reduction: 30% (compared to traditional knee braces)</li>
+                        <li>User mobility improvement: 25%</li>
+                        <li>Device cost: 40% lower than hospital rehabilitation machines</li>
+                        <li>Environmental impact: Reduced by 20% through lightweight and recyclable design</li>
+                        <li>Range of motion: Knee flexion-extension angle 30-90 degrees (ensuring rehabilitation safety)</li>
+                        <li>Prototype cost: 403.16 RMB (based on 3D printed parts, ESP32 and other readily available materials)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Advantages Section -->
+    <section id="advantage">
+        <div class="container">
+            <h2 class="section-title">Unique Value Proposition & Competitive Advantages</h2>
+            
+            <div class="fade-in" style="margin-bottom: 3rem;">
+                <h3 style="text-align: center; color: var(--accent);">Comparison with Traditional Solutions</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Traditional Knee Brace</th>
+                            <th>Hospital Rehab Machine</th>
+                            <th>KneeGuard Pro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Real-time Pressure Adjustment</td>
+                            <td class="cross">❌ Not Supported</td>
+                            <td class="cross">❌ Not Supported</td>
+                            <td class="check">✅ Adaptive Adjustment</td>
+                        </tr>
+                        <tr>
+                            <td>Activity Adaptability</td>
+                            <td class="cross">❌ Fixed Support</td>
+                            <td class="cross">❌ Professional Supervision Required</td>
+                            <td class="check">✅ Motion-adaptive Intelligent Adjustment</td>
+                        </tr>
+                        <tr>
+                            <td>Home Use</td>
+                            <td class="check">✅ Suitable for Home</td>
+                            <td class="cross">❌ Hospital Only</td>
+                            <td class="check">✅ Designed for Home Use</td>
+                        </tr>
+                        <tr>
+                            <td>Cost</td>
+                            <td class="check">✅ Moderate Price</td>
+                            <td class="cross">❌ Expensive (Thousands)</td>
+                            <td class="check">✅ 40% Lower than Hospital Equipment</td>
+                        </tr>
+                        <tr>
+                            <td>Data Monitoring</td>
+                            <td class="cross">❌ None</td>
+                            <td class="check">✅ Available</td>
+                            <td class="check">✅ Intelligent Monitoring & Feedback</td>
+                        </tr>
+                        <tr>
+                            <td>Personalization</td>
+                            <td class="cross">❌ Limited</td>
+                            <td class="check">✅ Partially Supported</td>
+                            <td class="check">✅ Fully Personalized Customization</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="fade-in">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">Intellectual Property Protection & Commercialization Strategy</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <div style="padding: 1.5rem; background: rgba(10, 36, 99, 0.2); border-radius: 10px;">
+                        <h4><i class="fas fa-file-invoice patent-icon"></i>Invention Patent</h4>
+                        <p>Protects core technology, 20-year protection period<br>Covers: Three-chamber unloading biomechanical structure, intelligent sensing and control algorithm</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(10, 36, 99, 0.2); border-radius: 10px;">
+                        <h4><i class="fas fa-tools patent-icon"></i>Utility Model Patent</h4>
+                        <p>Protects shape and construction improvements, 10-year protection period<br>Covers: Scaffold mechanical components/housing design</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(10, 36, 99, 0.2); border-radius: 10px;">
+                        <h4><i class="fas fa-palette patent-icon"></i>Design Patent</h4>
+                        <p>Protects product appearance design, 15-year protection period</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-in" style="margin-top: 3rem; padding: 2rem; background: rgba(255, 107, 53, 0.1); border-radius: 10px; border-left: 4px solid var(--accent);">
+                <h3 style="color: var(--accent);">Sustainable Competitive Advantage</h3>
+                <p>Our design integrates proprietary real-time sensing algorithms and customized biomechanical modeling, requiring specialized calibration data that is difficult to replicate. Collaborating with university biomechanics laboratories, we have pilot user and data advantages, with monthly user feedback updates increasing product iteration speed by 30%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Introduction Section -->
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Innovation Team Introduction</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">Our core team combines expertise in business operations and technology R&D, focusing on innovation in knee rehabilitation</p>
+            
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-avatar">A</div>
+                    <h3>Alizzy</h3>
+                    <h4 style="color: var(--accent);">Business Lead</h4>
+                    <p>Responsible for market strategy, business model design and commercialization. Has 5 years of medical device market experience, successfully launched 3 rehabilitation products. Focuses on market channel development and policy subsidy applications.</p>
+                    <div style="margin-top: 1rem;">
+                        <span style="display: inline-block; padding: 0.3rem 0.8rem; background: rgba(10, 36, 99, 0.3); border-radius: 20px; font-size: 0.9rem; margin: 0.2rem;">Market Strategy</span>
+                        <span style="display: inline-block; padding: 0.3rem 0.8rem; background: rgba(10, 36, 99, 0.3); border-radius: 20px; font-size: 0.9rem; margin: 0.2rem;">Business Operations</span>
+                        <span style="display: inline-block; padding: 0.3rem 0.8rem; background: rgba(10, 36, 99, 0.3); border-radius: 20px; font-size: 0.9rem; margin: 0.2rem;">Policy Research</span>
+                    </div>
+                </div>
+                
+                <div class="team-card fade-in">
+                    <div class="team-avatar">B</div>
+                    <h3>Abigail</h3>
+                    <h4 style="color: var(--accent);">Technology Lead</h4>
+                    <p>Ph.D. in Biomedical Engineering, focusing on biomechanics and rehabilitation engineering. Leads core technology R&D, holds 3 related patents. Responsible for product technology roadmap planning and R&D team management.</p>
+                    <div style="margin-top: 1rem;">
+                        <span style="display: inline-block; padding: 0.3rem 0.8rem; background: rgba(10, 36, 99, 0.3); border-radius: 20px; font-size: 0.9rem; margin: 0.2rem;">Biomechanics</span>
+                        <span style="display: inline-block; padding: 0.3rem 0.8rem; background: rgba(10, 36, 99, 0.3); border-radius: 20px; font-size: 0.9rem; margin: 0.2rem;">Rehabilitation Engineering</span>
+                        <span style="display: inline-block; padding: 0.3rem 0.8rem; background: rgba(10, 36, 99, 0.3); border-radius: 20px; font-size: 0.9rem; margin: 0.2rem;">Patent Technology</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="partners-section fade-in">
+                <h3>Partners & Supporting Institutions</h3>
+                <p style="margin-top: 1rem; margin-bottom: 1.5rem;">We have established collaborations with multiple university biomechanics laboratories, accumulating pilot user and data advantages</p>
+                
+                <div class="partners-logos">
+                    <div class="partner-logo">University<br>Laboratory</div>
+                    <div class="partner-logo">Rehabilitation<br>Institution</div>
+                    <div class="partner-logo">Hospital<br>Cooperation</div>
+                    <div class="partner-logo">Technology<br>Park</div>
+                </div>
+                
+                <p style="margin-top: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Established exclusive pilot cooperation with chain rehabilitation institutions, accumulating users, data, and brand trust. Monthly user feedback updates increase product iteration speed by 30%. We continuously collaborate with university biomechanics laboratories to optimize product design and validation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">If you are interested in our intelligent knee rehabilitation system, please feel free to contact us for more information</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt" style="color: var(--accent); font-size: 1.2rem;"></i>
+                    <span>Address: Building A, Technology Park, High-tech Industrial Development Zone, XXX City</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone" style="color: var(--accent); font-size: 1.2rem;"></i>
+                    <span>Phone: 12345678910</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope" style="color: var(--accent); font-size: 1.2rem;"></i>
+                    <span>Email: contact@kneeguardpro.com</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 1.5rem;">Get Product Information & Business Cooperation</h3>
+                <div>
+                    <button class="cta-button" onclick="requestBrochure()">Get Product Brochure</button>
+                    <button class="interactive-btn" onclick="contactSales()">Business Cooperation Inquiry</button>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; padding: 2rem; background: rgba(10, 36, 99, 0.2); border-radius: 10px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h4 style="color: var(--accent); margin-bottom: 1rem;">Market Channels & Sales Network</h4>
+                <p>Products will be sold through major e-commerce platforms such as Tmall Pharmacy, JD Health, and hospital rehabilitation partners, covering over 75% of target users. Delivered within 3-5 days through nationwide logistics network, ensuring elderly customers and clinics receive products quickly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 1.5rem;">
+                <div class="logo-icon"></div>
+                <div class="logo-text">KneeGuard Pro</div>
+            </div>
+            
+            <p style="margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">Intelligent Dynamic Knee Rehabilitation System - Conrad Competition Innovation Project</p>
+            
+            <div class="footer-links">
+                <a href="#problem">Problem & Pain Points</a>
+                <a href="#solution">Solution</a>
+                <a href="#technology">Core Technology</a>
+                <a href="#advantage">Unique Advantages</a>
+                <a href="#team">Our Team</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            
+            <p style="margin-top: 2rem; color: rgba(192, 192, 192, 0.6); font-size: 0.9rem;">© 2023 KneeGuard Pro Intelligent Knee Rehabilitation System. Conrad Competition Project.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Initialize Data Visualization
+            initDataViz();
+        });
+        
+        // Data Visualization
+        function initDataViz() {
+            const dataVizContainer = document.querySelector('.data-viz');
+            if (!dataVizContainer) return;
+            
+            const data = [
+                { label: 'Knee Pressure Reduction', value: 30, color: '#FF6B35' },
+                { label: 'User Mobility Improvement', value: 25, color: '#4ECDC4' },
+                { label: 'Device Cost Reduction', value: 40, color: '#0A2463' },
+                { label: 'Environmental Impact Reduction', value: 20, color: '#C0C0C0' }
+            ];
+            
+            data.forEach(item => {
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = '0px'; // Initial height 0, will increase via animation
+                bar.style.background = `linear-gradient(to top, ${item.color}, ${item.color}99)`;
+                
+                const label = document.createElement('div');
+                label.className = 'bar-label';
+                label.textContent = item.label;
+                
+                const value = document.createElement('div');
+                value.className = 'bar-value';
+                value.textContent = `${item.value}%`;
+                
+                bar.appendChild(value);
+                bar.appendChild(label);
+                dataVizContainer.appendChild(bar);
+                
+                // Animated display of bar chart
+                setTimeout(() => {
+                    bar.style.height = `${item.value * 1.5}px`;
+                }, 300);
+            });
+        }
+        
+        // Interactive Functions
+        function showDemo() {
+            alert("Product demonstration video will play in a new window.\n\nDemonstration content includes:\n1. Product wearing and adjustment\n2. Intelligent pressure adjustment process\n3. Mobile APP data monitoring interface\n4. User daily usage scenarios");
+        }
+        
+        function toggleTechDetails() {
+            const details = document.getElementById('tech-details');
+            if (details.style.display === 'none') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+        
+        function requestBrochure() {
+            alert("Product brochure request submitted!\n\nWe will send you detailed product technical specifications, clinical data validation, and pricing information via email.\n\nFor urgent inquiries, please call our customer service directly: 12345678910");
+        }
+        
+        function contactSales() {
+            alert("Business cooperation inquiry submitted!\n\nOur business team will contact you within 24 hours to discuss the following cooperation possibilities:\n1. Regional agency cooperation\n2. Hospital/rehabilitation center bulk procurement\n3. Medical insurance cooperation and policy subsidy applications\n4. Technology licensing and OEM production");
+        }
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
